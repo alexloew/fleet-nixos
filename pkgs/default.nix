@@ -1,14 +1,14 @@
 {pkgs ? import <nixpkgs> {}}: let
-  version = "1.45.1";
+  version = "1.46.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "fleetdm";
     repo = "fleet";
     tag = "orbit-v${version}";
-    sha256 = "sha256-m4cfjkwRmQM1I2ONzb6z4taOGmRVIcSLgpHaEoQIErM=";
+    sha256 = "sha256-yQZ7Bfuyz3QUlIDrM2jd2bd4QnG95tkoXllOT9FFDOU=";
   };
 
-  vendorHash = "sha256-UOY9W2ULh2eNIfUmyU38nZCVWNTWIDTf7GBBkptrlTQ=";
+  vendorHash = "sha256-uX0LDDcG1KlSAwA2N7y5QNa/rUEm0QezsvMOx6oorL0=";
   commit = "763cb16123ec1fef7fc0926d84825742d37eb8ab";
   date = "2025-08-11T11:03:34Z";
 
