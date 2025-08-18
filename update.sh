@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p nix-update curl jq gnused gh
+#! nix-shell -i bash -p nix-update curl jq gnused
 
 set -euo pipefail
 
@@ -11,7 +11,7 @@ DATA=$(curl -s "$API_URL/git/refs/tags" | jq -r '
     | {
         tag: (.ref | sub("^refs/tags/"; "")),
         sha: .object.sha,
-        ver: (.ref | capture("^refs/tags/orbit-v(?<ver>.*)$").ver)
+        ver: (.ref | capture("v(?<ver>.*)$").ver)
       }
   ]
   | sort_by(.ver | split(".") | map(tonumber))
