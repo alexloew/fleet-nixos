@@ -42,9 +42,9 @@ in {
     '';
 
     patches = [
-      ./patches/osqueryd-path-override.patch
-      ./patches/osquery-log-path.patch
-      ./patches/write-identifier.patch
+      ../patches/osqueryd-path-override.patch
+      ../patches/osquery-log-path.patch
+      ../patches/write-identifier.patch
     ];
   };
 
