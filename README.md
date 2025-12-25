@@ -106,15 +106,14 @@ NOTE: Orbit does not log everything to journald. Check `/var/log/orbit/` for log
 
 ## Patches
 
-Patches in this repo add extra flags to Orbit for NixOS compatibility:
+Patches in this repo add extra flags and functionality to Orbit for NixOS compatibility:
 
-- `NIX_ORBIT_OSQUERYD_PATH`: Ensures the osqueryd binary from the Nix store is used.
-- `NIX_ORBIT_OSQUERY_LOG_PATH`: Ensures osquery logs are written to `/var/log/orbit/osquery/`.
-- `NIX_ORBIT_WRITE_FLEET_DESKTOP_IDENTIFIER`: Ensures the device identifier is written for Fleet Desktop integration.
+- `orbit-nixos.patch`: Patches Orbit's script execution to automatically replace common shebangs (like `#!/bin/bash`) with NixOS-style paths (`#!/run/current-system/sw/bin/bash`) before execution.
+- `osqueryd-path-override.patch`: Adds `NIX_ORBIT_OSQUERYD_PATH` to allow overriding the `osqueryd` binary path, ensuring the version from the Nix store is used.
+- `osquery-log-path.patch`: Adds `NIX_ORBIT_OSQUERY_LOG_PATH` to ensure osquery logs are written to `/var/log/orbit/osquery/` instead of the root directory.
+- `scripts-nixos.patch`: Relaxes Orbit's shebang validation to allow NixOS-specific paths and `/usr/bin/env` interpreters in scripts.
 
-These flags are not present upstream and are always set by the module. They
-ensure correct binary usage, log placement, and Fleet Desktop integration on
-NixOS.
+These patches ensure that Fleet Orbit works correctly in the read-only and non-standard environment of NixOS.
 
 ## Development
 
