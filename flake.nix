@@ -30,5 +30,22 @@
     nixosModules.fleet-nixos = import ./modules {
       fleetPackages = self.packages;
     };
+    devShells = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            go
+            gopls
+            gotools
+            nix-update
+            curl
+            jq
+            alejandra
+          ];
+        };
+      }
+    );
   };
 }
