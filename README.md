@@ -113,6 +113,26 @@ These flags are not present upstream and are always set by the module. They
 ensure correct binary usage, log placement, and Fleet Desktop integration on
 NixOS.
 
+## Development
+
+### Running Checks
+
+To run all checks (formatting, flake structure, and package builds) locally, use:
+
+```shell
+nix flake check
+```
+
+This is the same command used in CI to ensure the repository is in a good state.
+
+### Formatting
+
+This project uses `alejandra` for formatting Nix files. You can format the entire project with:
+
+```shell
+nix fmt .
+```
+
 ## Updating Fleet Orbit
 
 To update to the latest Fleet Orbit release, run:
