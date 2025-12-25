@@ -1,16 +1,16 @@
 {pkgs ? import <nixpkgs> {}}: let
-  version = "1.46.0";
+  version = "1.50.2";
 
   src = pkgs.fetchFromGitHub {
     owner = "fleetdm";
     repo = "fleet";
     tag = "orbit-v${version}";
-    sha256 = "sha256-yQZ7Bfuyz3QUlIDrM2jd2bd4QnG95tkoXllOT9FFDOU=";
+    sha256 = "sha256-rIiY17BawLgr2JdS0xpAp5kgCdU5CDDVZuG2fGUHINs=";
   };
 
-  vendorHash = "sha256-uX0LDDcG1KlSAwA2N7y5QNa/rUEm0QezsvMOx6oorL0=";
-  commit = "763cb16123ec1fef7fc0926d84825742d37eb8ab";
-  date = "2025-08-11T11:03:34Z";
+  vendorHash = "sha256-rrj7RfS5so3297sFhC+7UcFwH/dUFTMDIxPYhstoFvI=";
+  commit = "490a193a5eb97d2f29769412f0f0f3f805999f63";
+  date = "2025-12-12T14:46:25Z";
 
   goFlags = ["-buildvcs=false"];
   ldflags = [
@@ -44,7 +44,6 @@ in {
     patches = [
       ../patches/osqueryd-path-override.patch
       ../patches/osquery-log-path.patch
-      ../patches/write-identifier.patch
       ../patches/orbit-nixos.patch
       ../patches/scripts-nixos.patch
     ];
