@@ -1,2 +1,4 @@
 *.deb
 result
+.direnv
+.env*
