@@ -1,3 +1,6 @@
+> [!WARNING]
+> This project is less actively maintained as I no longer have NixOS machines running Fleet.
+
 # fleet-nixos
 
 Fleet Orbit and Fleet Desktop integration for NixOS, packaged as a Nix flake.
@@ -67,20 +70,20 @@ services.orbit = {
 ### Configuration Options and Environment Variables
 
 | Option                                | Description                                                                                          |
-|---------------------------------------|------------------------------------------------------------------------------------------------------|
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `enable`                              | Enable Fleet Orbit systemd service                                                                   |
-| `fleetUrl`                            | Base URL of the Fleet server                       (`ORBIT_FLEET_URL`)                               |
-| `enrollSecret`                        | Enroll secret for Fleet server                     (`ORBIT_ENROLL_SECRET`)                           |
-| `enrollSecretPath`                    | Path to enroll secret file                         (`ORBIT_ENROLL_SECRET_PATH`)                      |
-| `fleetCertificate`                    | Path to Fleet server certificate chain             (`ORBIT_FLEET_CERTIFICATE`)                       |
-| `debug`                               | Enable debug logging                               (`ORBIT_DEBUG`)                                   |
-| `devMode`                             | Enable development mode                            (`ORBIT_DEV_MODE`)                                |
-| `hostIdentifier`                      | Host identifier mode (e.g., "uuid")                (`ORBIT_HOST_IDENTIFIER`)                         |
-| `enableScripts`                       | Enable script execution                            (`ORBIT_ENABLE_SCRIPTS`)                          |
-| `fleetDesktopAlternativeBrowserHost`  | Alternative browser host for Fleet Desktop         (`ORBIT_FLEET_DESKTOP_ALTERNATIVE_BROWSER_HOST`)  |
+| `fleetUrl`                            | Base URL of the Fleet server (`ORBIT_FLEET_URL`)                                                     |
+| `enrollSecret`                        | Enroll secret for Fleet server (`ORBIT_ENROLL_SECRET`)                                               |
+| `enrollSecretPath`                    | Path to enroll secret file (`ORBIT_ENROLL_SECRET_PATH`)                                              |
+| `fleetCertificate`                    | Path to Fleet server certificate chain (`ORBIT_FLEET_CERTIFICATE`)                                   |
+| `debug`                               | Enable debug logging (`ORBIT_DEBUG`)                                                                 |
+| `devMode`                             | Enable development mode (`ORBIT_DEV_MODE`)                                                           |
+| `hostIdentifier`                      | Host identifier mode (e.g., "uuid") (`ORBIT_HOST_IDENTIFIER`)                                        |
+| `enableScripts`                       | Enable script execution (`ORBIT_ENABLE_SCRIPTS`)                                                     |
+| `fleetDesktopAlternativeBrowserHost`  | Alternative browser host for Fleet Desktop (`ORBIT_FLEET_DESKTOP_ALTERNATIVE_BROWSER_HOST`)          |
 | `fleetManagedHostIdentityCertificate` | Use TPM-backed key for Fleet EE (requires license) (`ORBIT_FLEET_MANAGED_HOST_IDENTITY_CERTIFICATE`) |
-| `endUserEmail`                        | End user email (experimental)                      (`ORBIT_END_USER_EMAIL`)                          |
-| `insecure`                            | Disable TLS certificate verification               (`ORBIT_INSECURE`)                                |
+| `endUserEmail`                        | End user email (experimental) (`ORBIT_END_USER_EMAIL`)                                               |
+| `insecure`                            | Disable TLS certificate verification (`ORBIT_INSECURE`)                                              |
 
 ## Design Decisions
 
@@ -155,6 +158,6 @@ same configuration and integrates with graphical sessions.
 - **Secrets**: Use `enrollSecretPath` with sops-nix for secure secret management.
 - **Logs**: Check `/var/log/orbit/` for logs.
 
-______________________________________________________________________
+---
 
 For more details on Orbit configuration, see [orbit.go upstream](https://github.com/fleetdm/fleet/blob/main/orbit/cmd/orbit/orbit.go).
