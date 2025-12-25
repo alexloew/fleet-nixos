@@ -27,6 +27,19 @@
           pkgs = nixpkgs.legacyPackages.${system};
         }
     );
+    checks = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      {
+        format =
+          pkgs.runCommand "check-format" {
+            nativeBuildInputs = [pkgs.alejandra];
+          } ''
+            alejandra --check ${self}
+            touch $out
+          '';
+      }
+      // self.packages.${system});
     nixosModules.fleet-nixos = import ./modules {
       fleetPackages = self.packages;
     };
